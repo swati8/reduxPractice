@@ -1,7 +1,8 @@
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import {getAllPosts,updatePost,deletePost} from './listingAction';
-
+import Post from './Posts';
+import User from './Users';
 
 class Listing extends Component {
     constructor() {
@@ -36,14 +37,15 @@ class Listing extends Component {
                <ul>
                    {
                        comments.length ?
-                           comments.map(comment => <li key={comment.id}>{comment.email} - {comment.comment}</li>) :
+                           comments.map(comment =>
+                                <Post key={comment.id} post={comment}/>) :
                            <li>No Users Found.</li>
                    }
                </ul>
                 <ul>
                    {
                        users.length ?
-                           users.map((email,index) => <li key={index}>{email}</li>) : null
+                           users.map((email,index) => <User key={index} email={email} />) : null
                    }
                </ul>
             </div>

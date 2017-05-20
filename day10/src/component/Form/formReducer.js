@@ -7,11 +7,12 @@ export default (state = form,action) => {
     let comment,email;
     console.log("in reducer");
     switch (action.type) {
+        case 'GET_COMMENT' : return state;
         case 'ADD_COMMENT' :
-             comment = state.comment;
-             email = state.email;
+             comment = [...state.comment];
+             email = [...state.email];
             comment.unshift(action.data);
-            if(!state.email.indexOf(action.data.email) < 0) {
+            if(state.email.indexOf(action.data.email) < 0) {
                 email.unshift(action.data.email);
             }
             return {...state,comment,email};

@@ -20,6 +20,7 @@ export default class App extends Component {
             <div>
                 <Header/>
                 <Form />
+                <Listing/>
                 <Footer/>
             </div>
 

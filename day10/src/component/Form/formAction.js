@@ -1,6 +1,14 @@
-let uniqueId = 0;
+let uniqueId = -1;
 
-export default (post) => {
+export function updatePost(post) {
+    return (dispatch) => {
+        console.log("in action");
+         dispatch({type:'EDIT_COMMENT',data:post});
+        dispatch({type:'RESET_FORM'})
+    };
+}
+
+export function addPost(post) {
     return (dispatch) => {
         console.log("in action");
         let userPost = {

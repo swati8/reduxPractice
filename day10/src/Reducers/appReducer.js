@@ -1,13 +1,12 @@
-const form = {
+const app = {
   email : [],
     comment : []
 };
 
-export default (state = form,action) => {
+export default (state = app,action) => {
     let comment,email;
     console.log("in reducer");
     switch (action.type) {
-        case 'GET_COMMENT' : return state;
         case 'ADD_COMMENT' :
              comment = [...state.comment];
              email = [...state.email];
@@ -27,7 +26,7 @@ export default (state = form,action) => {
             return {...state,comment,email};
         case 'EDIT_COMMENT' :
             comment = [...state.comment];
-            comment[action.data.id].comment = action.comment;
+            comment[action.data.id].comment = action.data.comment;
             return {...state,comment};
     }
     return state;

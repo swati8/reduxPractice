@@ -32,8 +32,8 @@ class Listing extends Component {
         this.props.deletePost(index);
     }
 
-    editPost(index) {
-
+    editPost(index,comment) {
+        this.props.updatePost(index,comment)
     }
 
     render () {
@@ -48,7 +48,7 @@ class Listing extends Component {
                            comments.map(comment => (
                            <li key={comment.id}>
                                {comment.email} - {comment.comment}
-                               <button onClick={() => this.editPost(comment.id)}>edit</button>
+                               <button onClick={() => this.editPost(comment.id,comment)}>edit</button>
                                <button onClick={() => this.deletePost(comment.id)}>delete</button>
                            </li>
                            )) :
@@ -69,7 +69,7 @@ class Listing extends Component {
 const mapStateToProps1 = (state) => state.allComments;
 
 const mapDispatchToProps1 = (dispatch) => ({
-    updatePost : (comment,index) => dispatch(updatePost(comment,index)),
+    updatePost : (index,comment) => dispatch(updatePost(comment,index)),
     deletePost : (index) => dispatch(deletePost(index))
 });
 

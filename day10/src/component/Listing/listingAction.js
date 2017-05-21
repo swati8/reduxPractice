@@ -1,14 +1,7 @@
-export function getAllPosts() {
-    return (dispatch) => {
-        console.log("in action");
-        dispatch({type:'GET_COMMENT'});
-    };
-}
-
 export function updatePost(comment,index) {
     return (dispatch) => {
         console.log("in action");
-        dispatch({type:'EDIT_COMMENT',data:{comment,index}});
+        dispatch({type:'UPDATE_FORM',data:comment});
     };
 }
 
@@ -18,9 +11,3 @@ export function deletePost(index) {
         dispatch({type:'REMOVE_COMMENT',data:index});
     };
 };
-
-/*
-* export updatePost = () => {
- }
-*
-* */

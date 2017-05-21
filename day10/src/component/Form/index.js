@@ -3,18 +3,22 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {addPost,updatePost} from './formAction';
 
-class Form extends Component {
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
+
+class myForm extends Component {
     constructor () {
         super();
         this.EMAIL = "email";
         this.COMMENT = "comment";
-        this.error = "";
+        this.error = "error";
         this.edited = false;
         this.oldPost = {};
 
         this.state = {
             email : '',
             comment : '',
+            error : ''
         };
 
     }
@@ -30,7 +34,8 @@ class Form extends Component {
     };
 
     validateForm = () => {
-        if(!(this.state.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)) {
+        if(!this.state.email || !(this.state.email).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm)) {
+            console.log("in error");
             this.setValue(this.error,this.EMAIL);
             return false;
         } else if(this.state.comment == "") {
@@ -60,7 +65,8 @@ class Form extends Component {
                 });
             }
             this.setValue(this.COMMENT,"");
-            this.error = '';
+            this.setValue(this.error,"");
+
         }
     };
 
@@ -75,17 +81,25 @@ class Form extends Component {
 
     render () {
         return(
-            <form>
-                <input type="email" value={this.state.email} placeholder="Enter your email"
-                       onChange={(e) => {this.changeHandler(this.EMAIL,e)}}/>
-                {(this.error === this.EMAIL)?<div>Invalid EMAIL</div>:null}
-
-                <input type="text" value={this.state.comment} placeholder="What's in your mind"
-                       onChange={(e) => {this.changeHandler(this.COMMENT,e)}}/>
-                {(this.error === this.COMMENT)?<div>Comment cannot be blank</div>:null}
-
-                <input type="submit" onClick={this.submitPost}/>
-            </form>
+            <Form style={{background:"#ccffff"}}>
+               <FormGroup>
+                   <Label>EMAIL : </Label>
+                  <Input type="email" value={this.state.email} placeholder="Enter your email"
+                         onChange={(e) => {this.changeHandler(this.EMAIL,e)}}
+                    style={{'width': '500px'}}/>
+                   {(this.state.error == this.EMAIL)?<Label>Invalid EMAIL</Label>:null}
+               </FormGroup>
+                <FormGroup>
+                    <Label>COMMENT : </Label>
+                    <Input type="textarea" value={this.state.comment} placeholder="What's in your mind"
+                           onChange={(e) => {this.changeHandler(this.COMMENT,e)}}
+                           style={{'width': '500px'}}/>
+                    {(this.state.error === this.COMMENT)?<div>Comment cannot be blank</div>:null}
+                </FormGroup>
+                <Button color="primary" type="submit" onClick={this.submitPost}>
+                    Submit
+                </Button>
+            </Form>
         );
     }
 }
@@ -97,4 +111,4 @@ const mapDispatchToProps = (dispatch) => ({
     updatePost : (post) => dispatch(updatePost(post))
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Form);
+export default connect(mapStateToProps,mapDispatchToProps)(myForm);

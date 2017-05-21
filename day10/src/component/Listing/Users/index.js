@@ -1,10 +1,12 @@
 import React from 'react';
 
+import {ListGroupItem} from 'reactstrap';
+
 export default (props) => {
 
     return(
-       <li>
+       <ListGroupItem>
            {props.email}
-       </li>
+       </ListGroupItem>
     )
 }

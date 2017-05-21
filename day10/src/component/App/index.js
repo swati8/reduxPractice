@@ -4,6 +4,8 @@ import Header from '../Header';
 import Form from "../Form";
 import Listing from  "../Listing";
 
+import { Container, Row, Col } from 'reactstrap';
+
 export default class App extends Component {
     constructor() {
         super();
@@ -18,10 +20,62 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <Header/>
-                <Form />
-                <Listing/>
-                <Footer/>
+               <Container>
+                   <Row>
+                       <Col>
+                           <br/>
+                           <br/>
+                       </Col>
+                   </Row>
+
+                    <Row>
+                        <Col md="2"/>
+                        <Col md="10">
+                            <Header/>
+                        </Col>
+                    </Row>
+
+                   <Row>
+                       <Col>
+                           <br/>
+                           <br/>
+                       </Col>
+                   </Row>
+
+                   <Row>
+                        <Col md="2"/>
+                        <Col md="10">
+                            <Form/>
+                        </Col>
+                    </Row>
+
+                   <Row>
+                       <Col>
+                           <br/>
+                           <br/>
+                       </Col>
+                   </Row>
+
+                    <Row>
+                        <Col md="2"/>
+                        <Col md="10">
+                            <Listing/>
+                        </Col>
+                    </Row>
+
+                   <Row>
+                       <Col>
+                           <br/>
+                           <br/>
+                       </Col>
+                   </Row>
+                    <Row>
+                        <Col md="2"/>
+                        <Col md="10">
+                            <Footer/>
+                        </Col>
+                    </Row>
+               </Container>
             </div>
 
         )

@@ -1,4 +1,4 @@
-import formReducer from '../component/Form/formReducer';
+import formReducer from './appReducer';
 
 export default {
     allComments : formReducer

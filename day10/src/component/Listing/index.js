@@ -66,7 +66,7 @@ class Listing extends Component {
     }
 };
 
-const mapStateToProps1 = (state) => {console.log("state changeeeeeeed",state); return state.allComments;};
+const mapStateToProps1 = (state) => state.allComments;
 
 const mapDispatchToProps1 = (dispatch) => ({
     updatePost : (comment,index) => dispatch(updatePost(comment,index)),

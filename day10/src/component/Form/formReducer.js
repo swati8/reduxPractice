@@ -17,16 +17,16 @@ export default (state = form,action) => {
             }
             return {...state,comment,email};
         case 'REMOVE_COMMENT' :
-            comment = state.comment;
-            email = state.email;
-            comment.splice(action.data.id,1);
-            let index = comment.findIndex(x => x.email === action.data.email);
+            comment = [...state.comment];
+            email = [...state.email];
+            let deleteComment = comment.splice(action.data.index,1);
+            let index = comment.findIndex(x => x.email === deleteComment[0].email);
             if(index < 0) {
                 email.splice(action.data.email);
             }
             return {...state,comment,email};
         case 'EDIT_COMMENT' :
-            comment = state.comment;
+            comment = [...state.comment];
             comment[action.data.id].comment = action.comment;
             return {...state,comment};
     }

@@ -28,17 +28,30 @@ class Listing extends Component {
         this.setValue(this.COMMENTS,props.comment);
     }
 
+    deletePost(index) {
+        this.props.deletePost(index);
+    }
+
+    editPost(index) {
+
+    }
+
     render () {
             let users = this.state.users;
             let comments = this.state.comments;
-        console.log(">>>>>", this.props);
-        return(
+
+        return (
             <div>
                <ul>
                    {
                        comments.length ?
-                           comments.map(comment =>
-                                <Post key={comment.id} post={comment}/>) :
+                           comments.map(comment => (
+                           <li key={comment.id}>
+                               {comment.email} - {comment.comment}
+                               <button onClick={() => this.editPost(comment.id)}>edit</button>
+                               <button onClick={() => this.deletePost(comment.id)}>delete</button>
+                           </li>
+                           )) :
                            <li>No Users Found.</li>
                    }
                </ul>
@@ -56,7 +69,6 @@ class Listing extends Component {
 const mapStateToProps1 = (state) => {console.log("state changeeeeeeed",state); return state.allComments;};
 
 const mapDispatchToProps1 = (dispatch) => ({
-    getPost : () => dispatch(getAllPosts()),
     updatePost : (comment,index) => dispatch(updatePost(comment,index)),
     deletePost : (index) => dispatch(deletePost(index))
 });

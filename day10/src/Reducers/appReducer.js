@@ -18,15 +18,15 @@ export default (state = app,action) => {
         case 'REMOVE_COMMENT' :
             comment = [...state.comment];
             email = [...state.email];
-            let deleteComment = comment.splice(action.data.index,1);
+            let deleteComment = comment.splice(action.data,1);
             let index = comment.findIndex(x => x.email === deleteComment[0].email);
             if(index < 0) {
-                email.splice(action.data.email);
+                email.splice(index,1);
             }
             return {...state,comment,email};
         case 'EDIT_COMMENT' :
             comment = [...state.comment];
-            comment[action.data.id].comment = action.data.comment;
+            comment[action.data.index].comment = action.data.comment;
             return {...state,comment};
     }
     return state;

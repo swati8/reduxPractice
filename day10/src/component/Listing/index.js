@@ -58,13 +58,13 @@ class Listing extends Component {
                             <ListGroup>
                                 {
                                     comments.length ?
-                                        comments.map(comment => (
-                                            <ListGroupItem key={comment.id}>
+                                        comments.map((comment,index) => (
+                                            <ListGroupItem key={index}>
                                                 {comment.email} - {comment.comment}
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <Button color="info" onClick={() => this.editPost(comment.id, comment)}>EDIT</Button>
+                                                <Button color="info" onClick={() => this.editPost(index, comment)}>EDIT</Button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <Button color="danger" onClick={() => this.deletePost(comment.id)}>DELETE</Button>
+                                                <Button color="danger" onClick={() => this.deletePost(index)}>DELETE</Button>
                                             </ListGroupItem>
                                         )) :
                                         <ListGroupItem>No Users Found.</ListGroupItem>

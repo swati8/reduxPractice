@@ -74,6 +74,7 @@ class myForm extends Component {
         if(props.post.email && props.post.comment) {
             this.edited = true;
             this.oldPost = props.post;
+            document.getElementById("email").disabled = true;
             this.setValue(this.EMAIL,props.post.email);
             this.setValue(this.COMMENT,props.post.comment);
         }
@@ -85,14 +86,14 @@ class myForm extends Component {
                <FormGroup>
                    <Label>EMAIL : </Label>
                   <Input type="email" value={this.state.email} placeholder="Enter your email"
-                         onChange={(e) => {this.changeHandler(this.EMAIL,e)}}
+                     id="email" onChange={(e) => {this.changeHandler(this.EMAIL,e)}}
                     style={{'width': '500px'}}/>
                    {(this.state.error == this.EMAIL)?<Label>Invalid EMAIL</Label>:null}
                </FormGroup>
                 <FormGroup>
                     <Label>COMMENT : </Label>
                     <Input type="textarea" value={this.state.comment} placeholder="What's in your mind"
-                           onChange={(e) => {this.changeHandler(this.COMMENT,e)}}
+                           id="comment" onChange={(e) => {this.changeHandler(this.COMMENT,e)}}
                            style={{'width': '500px'}}/>
                     {(this.state.error === this.COMMENT)?<div>Comment cannot be blank</div>:null}
                 </FormGroup>

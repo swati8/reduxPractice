@@ -5,7 +5,6 @@ const form = {
 
 export default (state = form,action) => {
     let comment,email;
-    console.log("in reducer");
     switch (action.type) {
         case 'UPDATE_FORM' :
                 let updateForm = true;

@@ -25,9 +25,12 @@ class Listing extends Component {
     };
 
     componentWillReceiveProps(props) {
-        console.log("componentWillReceiveProps", props);
+        let comment;
         this.setValue(this.USERS, props.email);
-        this.setValue(this.COMMENTS, props.comment);
+        comment = (props.postFilter.filtered)?
+            (props.comment.filter((post) => post.email === props.postFilter.email)):
+            [...props.comment];
+        this.setValue(this.COMMENTS, comment);
     }
 
     deletePost(index) {
@@ -49,11 +52,13 @@ class Listing extends Component {
                     <tr>
                         <th>
                             <ListGroup>
+                                <User key={-1} index={-1} email="All"/>
                                 {
                                     users.length ?
-                                        users.map((email, index) => <User key={index} email={email}/>) : null
+                                        users.map((email, index) => <User key={index} index={index} email={email}/>) : null
                                 }
-                            </ListGroup></th>
+                            </ListGroup>
+                        </th>
                         <th>
                             <ListGroup>
                                 {

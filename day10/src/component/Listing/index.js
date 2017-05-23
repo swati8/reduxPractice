@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getAllPosts, updatePost, deletePost} from './listingAction';
+import ListAction from './listingAction';
+import AppConstant from '../../config/constant';
+
 import Post from './Posts';
 import User from './Users';
 
@@ -87,8 +89,8 @@ class Listing extends Component {
 const mapStateToProps1 = (state) => state.allComments;
 
 const mapDispatchToProps1 = (dispatch) => ({
-    updatePost: (index, comment) => dispatch(updatePost(comment, index)),
-    deletePost: (index) => dispatch(deletePost(index))
+    updatePost: (index, comment) => dispatch(ListAction(AppConstant.UPDATE_FORM,comment)),
+    deletePost: (index) => dispatch(ListAction(AppConstant.REMOVE_COMMENT,index))
 });
 
 export default connect(mapStateToProps1, mapDispatchToProps1)(Listing);

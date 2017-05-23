@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {filterPost,resetFilter} from '../listingAction';
+import ListAction from '../listingAction';
+import AppConstant from '../../../config/constant';
 
 import {ListGroupItem} from 'reactstrap';
 
@@ -22,8 +23,8 @@ const User = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    resetFilter : () => dispatch(resetFilter()),
-    filterPost: (email) => dispatch(filterPost(email))
+    resetFilter : () => dispatch(ListAction(AppConstant.RESET_FILTER)),
+    filterPost: (email) => dispatch(ListAction(AppConstant.FILTER_POST,email))
 });
 
 //export default User;

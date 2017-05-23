@@ -38,7 +38,7 @@ class myForm extends Component {
             console.log("in error");
             this.setValue(this.error,this.EMAIL);
             return false;
-        } else if(this.state.comment == "") {
+        } else if(this.state.comment === "") {
             this.setValue(this.error,this.COMMENT);
             return false;
         }
@@ -47,7 +47,6 @@ class myForm extends Component {
 
     submitPost = (e) => {
         e.preventDefault();
-        console.log(">..........");
 
         //validateform
         let validation = this.validateForm();
@@ -66,7 +65,7 @@ class myForm extends Component {
             }
             this.setValue(this.COMMENT,"");
             this.setValue(this.error,"");
-
+            document.getElementById("email").disabled = false;
         }
     };
 

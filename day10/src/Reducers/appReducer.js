@@ -25,7 +25,8 @@ export default (state = app,action) => {
             }
             return {...state,comment,email};
         case 'EDIT_COMMENT' :
-            comment[action.data.index].comment = action.data.comment;
+            index = comment.findIndex(x => x.id === action.data.id);
+            comment[index].comment = action.data.comment;
             return {...state,comment};
         case 'FILTER_POST' :
             let postFilter = {};

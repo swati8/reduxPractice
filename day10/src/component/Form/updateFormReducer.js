@@ -1,3 +1,5 @@
+import AppConstant from '../../config/constant';
+
 const form = {
     updateForm : false,
     post : {}
@@ -6,11 +8,11 @@ const form = {
 export default (state = form,action) => {
     let comment,email;
     switch (action.type) {
-        case 'UPDATE_FORM' :
+        case AppConstant.UPDATE_FORM :
                 let updateForm = true;
                 let post = action.data;
             return {updateForm,post};
-        case 'RESET_FORM' :
+        case AppConstant.RESET_FORM :
             updateForm = false;
             post = {};
             return {updateForm,post};
